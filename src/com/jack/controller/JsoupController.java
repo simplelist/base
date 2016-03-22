@@ -3,39 +3,38 @@ package com.jack.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jack.entity.QiuBai;
+import com.jack.service.QiuBaiService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.jack.entity.Student;
-import com.jack.service.StudentService;
-import com.jack.spider.jsoup.JsoupParseHtml;
+import com.jack.spider.jsoup.QiuBaiParseHtml;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/jsoup")
+@RequestMapping("/qiubai")
 public class JsoupController {
 	@Autowired
-	private StudentService	studentService;
+	private QiuBaiService qiuBaiService;
 
 	@RequestMapping("/jsoup")
-	public void jsoupRun() {
-		List<String> contents = JsoupParseHtml.fetchContent(5);
-		saveStudent(contents);
-	}
-	@RequestMapping("/findAll")
-	@ResponseBody
-	public List<Student> findAll() {
-		return studentService.findAll();
+	public List<QiuBai> jsoupRun() {
+		List<QiuBai> contents = QiuBaiParseHtml.fetchContent(1);
+		qiuBaiService.saveAll(contents);
+        return contents;
 	}
 
-	public void saveStudent(List<String> ht_l) {
-		List<Student> lists = new ArrayList<Student>();
-		for (String string : ht_l) {
-			Student student = new Student();
-			student.setName(string);
-			lists.add(student);
-		}
-		studentService.saveAll(lists);
+
+	@ResponseBody
+	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
+	public QiuBai findById(@PathVariable Long id){
+		return qiuBaiService.get(id);
 	}
+	@RequestMapping("/qiubai")
+	@ResponseBody
+	public List<QiuBai> findAll() {
+		return qiuBaiService.findAll();
+	}
+
+
 }

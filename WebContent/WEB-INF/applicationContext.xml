@@ -65,7 +65,12 @@
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true"></property>
 				<property name="database" value="MYSQL"></property>
+				<property name="generateDdl" value="true" />
 			</bean>
+		</property>
+		<property name="packagesToScan">
+			<!-- 多个包用逗号分割 -->
+			<value>com.jack.entity</value>
 		</property>
 	</bean>
 	<!-- 日志 -->
