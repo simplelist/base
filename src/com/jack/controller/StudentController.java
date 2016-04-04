@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jack.entity.Student;
 import com.jack.service.StudentService;
 
+
 @RestController
 @RequestMapping("/student")  
 public class StudentController {
@@ -22,4 +23,5 @@ public class StudentController {
 		Student student=studentService.get(id);
         return student;  
     }
+
 }
