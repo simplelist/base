@@ -14,9 +14,10 @@ import java.net.URLConnection;
  */
 public class ZhiHu {
     private static String title="default";
-
+//    private static final String saveTo="/Users/jackshi/Desktop/image/";
+    private static final String saveTo="C:/Users/simplelist/Desktop/image/";
     public static void main(String[] args){
-        fetchZhiHu("https://www.zhihu.com/question/41030642");
+        fetchZhiHu("https://www.zhihu.com/question/27183254");
     }
     public static void fetchZhiHu(String webUrl){
         Document document;
@@ -46,14 +47,14 @@ public class ZhiHu {
         // 下载网络文件
         int bytesum = 0;
         int byteread = 0;
-        String folder="/Users/jackshi/Desktop/image/"+title;
+        String folder=saveTo+title;
         File fp = new File(folder);
         // 创建目录
         if (!fp.exists()) {
             fp.mkdirs();// 目录不存在的情况下，创建目录。
             System.out.println("create success");
         }
-        saveFile="/Users/jackshi/Desktop/image/"+title+"/"+saveFile;
+        saveFile=saveTo+title+"/"+saveFile;
         URL url = null;
         try {
             url = new URL(httpUrl);
