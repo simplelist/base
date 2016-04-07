@@ -43,7 +43,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>OpenEntityManagerInViewFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<!-- druid监控 -->
 	<filter>
@@ -81,7 +81,7 @@
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<!-- 配置所有的页面 -->
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 
 	<!-- 配置过滤器，同时把所有的请求都转为utf-8编码 -->

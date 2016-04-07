@@ -16,7 +16,7 @@ public class ZhiHu {
     private static String title="default";
 
     public static void main(String[] args){
-        fetchZhiHu("https://www.zhihu.com/question/41030642");
+        fetchZhiHu("https://www.zhihu.com/question/36584693");
     }
     public static void fetchZhiHu(String webUrl){
         Document document;
