@@ -16,8 +16,8 @@ public class Other {
 
     @Test
     public void test(){
-        String url="http://jandan.net/";
-        String selector=".indexs";
+        String url="https://www.zhihu.com/topics";
+        String selector=".item";
         fetchPage(url,selector);
     }
 
@@ -29,8 +29,7 @@ public class Other {
             Elements elements=document.select(selector);
 
             for (Element element:elements){
-                System.out.println(element.select(".comment-link").text()+">>"+element.select("h2 a").text());
-
+                System.out.println(element.select("a").attr("href"));
             }
         }catch (Exception e){
             e.printStackTrace();
